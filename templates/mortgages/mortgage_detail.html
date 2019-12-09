@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Mortgage {{ mortgage.pk }}</h1>
+    <p><a href="{% url 'mortgages-list' %}">Back to mortgages list</a></p>
+    <p>{{ mortgage }}</p>
+    <table>
+        <tbody>
+            <tr>
+                <td>Created</td><td>{{mortgage.created_at}}</td>
+            </tr>
+            <tr>
+                <td>Amount</td><td>${{mortgage.amount}}</td>
+            </tr>
+            <tr>
+                <td>Interest Rate</td><td>{{mortgage.interest_rate}}%</td>
+            </tr>
+            <tr>
+                <td>Weekly Payment</td><td>${{ mortgage.weekly_payment }}</td>
+            </tr>
+            <tr>
+                <td>Duration</td><td>{{mortgage.total_years}} years</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {# TODO - some graphs and calculations here #}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Mortgages</h1>
+
+    <p><a href="{% url 'index' %}">Back to dashboard</a></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Created</th>
+                <th>Amount</th>
+                <th>Interest Rate</th>
+                <th>Weekly Payment</th>
+                <th>Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mortgage in mortgages %}
+            <tr>
+                <td><a href="{{ mortgage.get_absolute_url }}">{{mortgage}}</a></td>
+                <td>{{mortgage.created_at}}</td>
+                <td>${{mortgage.amount}}</td>
+                <td>{{mortgage.interest_rate}}%</td>
+                <td>${{ mortgage.weekly_payment }}</td>
+                <td>{{mortgage.total_years}} years</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
