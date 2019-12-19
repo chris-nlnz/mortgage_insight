@@ -1,3 +1,4 @@
+import math
 import uuid
 from decimal import Decimal, ROUND_HALF_UP
 
@@ -10,6 +11,9 @@ NULLABLE = {
     'null': True
 }
 
+
+def _decimal_and_round_to_two(number):
+    return Decimal(number).quantize(Decimal('.01'), rounding=ROUND_HALF_UP)
 
 # TODO also model house price increase, LVR, equity over time, houses/house types/purpose (investment vs living),
 #      rent income offset for investment properties.. maybe model a portfolio even.
@@ -77,7 +81,19 @@ class Mortgage(models.Model):
             interest_component = balance * interest_rate_per_period
             principal_component = repayment_per_period - interest_component
             balance -= principal_component
-            schedule.append((index, repayment_per_period, interest_component, principal_component, max(balance, 0)))
+
+            readable_index = "Year {}, period {}".format(
+                math.floor(index / periods_per_year), index % periods_per_year
+            )
+
+            schedule.append((
+                index,
+                readable_index,
+                _decimal_and_round_to_two(repayment_per_period),
+                _decimal_and_round_to_two(interest_component),
+                _decimal_and_round_to_two(principal_component),
+                _decimal_and_round_to_two(max(balance, 0)),
+            ))
             index += 1
         return schedule
 
@@ -85,7 +101,7 @@ class Mortgage(models.Model):
         from tabulate import tabulate
         print(tabulate(
             self.amortization_schedule(periods_per_year),
-            headers=["Payment", "Amount", "Interest", "Principal", "Balance"],
+            headers=["Payment", "Date", "Amount", "Interest", "Principal", "Balance"],
             floatfmt=",.2f",
             numalign="right"
         ))

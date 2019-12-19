@@ -11,10 +11,10 @@
             <tr>
                 <th>Description</th>
                 <th>Created</th>
-                <th>Amount</th>
-                <th>Interest Rate</th>
+                <th>Principal</th>
+                <th>Annual Interest Rate</th>
                 <th>Weekly Payment</th>
-                <th>Duration</th>
+                <th>Term</th>
             </tr>
         </thead>
         <tbody>
@@ -22,10 +22,10 @@
             <tr>
                 <td><a href="{{ mortgage.get_absolute_url }}">{{mortgage}}</a></td>
                 <td>{{mortgage.created_at}}</td>
-                <td>${{mortgage.amount}}</td>
-                <td>{{mortgage.interest_rate}}%</td>
-                <td>${{ mortgage.weekly_payment }}</td>
-                <td>{{mortgage.total_years}} years</td>
+                <td>${{mortgage.principal}}</td>
+                <td>{{mortgage.effective_annual_interest_rate}}%</td>
+                <td>${{ mortgage.weekly_payments }}</td>
+                <td>{{mortgage.term}} years</td>
             </tr>
             {% endfor %}
         </tbody>

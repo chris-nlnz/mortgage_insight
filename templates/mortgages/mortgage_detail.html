@@ -11,20 +11,40 @@
                 <td>Created</td><td>{{mortgage.created_at}}</td>
             </tr>
             <tr>
-                <td>Amount</td><td>${{mortgage.amount}}</td>
+                <td>Principal</td><td>${{mortgage.principal}}</td>
             </tr>
             <tr>
-                <td>Interest Rate</td><td>{{mortgage.interest_rate}}%</td>
+                <td>Annual Interest Rate</td><td>{{mortgage.effective_annual_interest_rate}}%</td>
             </tr>
             <tr>
-                <td>Weekly Payment</td><td>${{ mortgage.weekly_payment }}</td>
+                <td>Weekly Payment</td><td>${{ mortgage.weekly_payments }}</td>
             </tr>
             <tr>
-                <td>Duration</td><td>{{mortgage.total_years}} years</td>
+                <td>Term</td><td>{{mortgage.term}} years</td>
             </tr>
         </tbody>
     </table>
 
     {# TODO - some graphs and calculations here #}
+    <h4>Amortization Schedule</h4>
+    <table>
+        <thead>
+            <tr>
+                <td>No</td><td>Date</td><td>Amount</td><td>Interest</td><td>Principal</td><td>Balance</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in mortgage.amortization_schedule %}
+                <tr>
+                    <td>{{ row.0 }}</td>
+                    <td>{{ row.1 }}</td>
+                    <td>${{ row.2 }}</td>
+                    <td>${{ row.3 }}</td>
+                    <td>${{ row.4 }}</td>
+                    <td>${{ row.5 }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
