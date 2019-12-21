@@ -1,5 +1,7 @@
 from os.path import join, dirname, abspath
 
+APP_VERSION = '0.1.0'
+
 DEBUG = False
 
 PROJECT_ROOT = dirname(dirname(abspath(__file__)))
@@ -51,6 +53,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'mortgages.context_processors.app_version',
             ],
         },
     },
