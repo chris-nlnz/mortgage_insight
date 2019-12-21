@@ -1,0 +1,95 @@
+.btg-blue {
+    background-color: #189BD6;
+}
+
+.btg-dark-blue {
+    background-color: #2f4050;
+}
+
+.card-body {
+    /* For some reason mdb has font-weight 400 in cards.. bit much */
+    font-weight: 300;
+}
+
+/* See https://gist.github.com/dylancwood/7368914 */
+ul.hierarchy {
+    list-style: none;
+}
+ul.hierarchy-root {
+    list-style: none;
+}
+ul.hierarchy-root, ul.hierarchy-root ul.hierarchy {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 5px;
+}
+ul.hierarchy-root ul.hierarchy {
+    margin-left: 20px;
+}
+ul.hierarchy-root li {
+    margin: 0;
+    padding: 0px 7px;
+    /*line-height: 20px;*/  /* commenting this fixes height issue */
+    color: #369;
+    border-left:1px solid rgb(100,100,100);
+}
+ul.hierarchy-root li:last-child {
+    border-left:none;
+    padding-bottom: 10px;
+}
+ul.hierarchy-root li:before {
+    position:relative;
+    top:-0.3em;
+    height:1em;
+    width:12px;
+    color:white;
+    border-bottom:1px solid rgb(100,100,100);
+    content:"";
+    display:inline-block;
+    left:-7px;
+}
+ul.hierarchy-root li:last-child:before {
+    border-left:1px solid rgb(100,100,100);
+}
+
+ul.hierarchy a.hierarchy-level-1 {
+    /* Second level should be slightly smaller than first */
+    font-size: 15px;
+}
+ul.hierarchy a:not(.hierarchy-level-0):not(.hierarchy-level-1) {
+    /* All links in a hierarchy EXCEPT the first two levels should be smaller font */
+    font-size: 13px;
+}
+
+.group-details-tab {
+    margin: 32px 16px 16px 16px;
+}
+
+table.mdb-custom-form-table {
+    border-spacing: 10px 1em;
+    border-collapse: separate;
+}
+
+table.mdb-custom-form-table input {
+    /* To align them with the bootstrap selects */
+    margin-left: 6px;
+}
+
+.planned-change {
+    margin-top: 12px;
+}
+
+.group-link:hover + .group-add-link, .group-add-link:hover {
+    display: inline;
+}
+.group-add-link {
+    display: none;
+}
+
+.tinted {
+    background: black;
+}
+.tinted img {
+    opacity: 0.9;
+}

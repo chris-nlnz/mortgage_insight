@@ -1,35 +1,48 @@
-{% extends 'base.html' %}
+{% extends 'mdb-base.html' %}
 
-{% block content %}
 
-    <h1>Mortgages</h1>
+{% block pagetitle %}List{% endblock %}
 
-    <p><a href="{% url 'index' %}">Back to dashboard</a></p>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Description</th>
-                <th>Created</th>
-                <th>Principal</th>
-                <th>Annual Interest Rate</th>
-                <th>Weekly Payment</th>
-                <th>Term</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for mortgage in mortgages %}
-            <tr>
-                <td><a href="{{ mortgage.get_absolute_url }}">{{mortgage}}</a></td>
-                <td>{{mortgage.created_at}}</td>
-                <td>${{mortgage.principal}}</td>
-                <td>{{mortgage.effective_annual_interest_rate}}%</td>
-                <td>${{ mortgage.weekly_payments }}</td>
-                <td>{{mortgage.term}} years</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+{% block main_content %}
 
+<div class="row">
+    <div class="col-4">
+
+
+        <h1>Mortgages</h1>
+
+        <p><a href="{% url 'index' %}">Back to dashboard</a></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Created</th>
+                    <th>Principal</th>
+                    <th>Annual Interest Rate</th>
+                    <th>Weekly Payment</th>
+                    <th>Term</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mortgage in mortgages %}
+                <tr>
+                    <td><a href="{{ mortgage.get_absolute_url }}">{{mortgage}}</a></td>
+                    <td>{{mortgage.created_at}}</td>
+                    <td>${{mortgage.principal}}</td>
+                    <td>{{mortgage.effective_annual_interest_rate}}%</td>
+                    <td>${{ mortgage.weekly_payments }}</td>
+                    <td>{{mortgage.term}} years</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+    <div class="col-8">
+    </div>
+</div>
 
 {% endblock %}

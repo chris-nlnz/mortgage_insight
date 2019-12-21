@@ -1,0 +1,10 @@
+{% for error in errors %}
+{# In bootstrap, .invalid-feedback are hidden unless the input element has a .is-invalid. This is #}
+{# to pre-render the HTML and make them show as invalid in real time. However, we validate on #}
+{# server side and so anytime we render this piece of HTML, the element should be visible. So we #}
+{# just add display:block to them. It could be as easy as adding .is-invalid to the input #}
+{# elements, but for some custom elements this doesn't work, so we use this slightly hacky way. #}
+<div class="invalid-feedback" style="display:block;{% if fix_for_selectpicker %}margin-top:0.90rem;{% endif %}">
+    {{ error }}
+</div>
+{% endfor %}

@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>
+        Mortgage Insight | {% block pagetitle %}{% endblock %}
+    </title>
+
+    {# Font Awesome #}{# TODO store locally - why isn't this just using the vendor/mdb one? #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {# Bootstrap core CSS #}
+    <link href="{% static 'vendor/mdb/css/bootstrap.min.css' %}" rel="stylesheet">
+    {# Bootstrap select (https://developer.snapappointments.com/bootstrap-select/) #}
+    <link href="{% static 'vendor/bootstrap-select-1.13.2/dist/css/bootstrap-select.min.css' %}" rel="stylesheet">
+    {# Material Design Bootstrap #}
+    <link href="{% static 'vendor/mdb/css/mdb.min.css' %}" rel="stylesheet">
+
+    {# gijgo Bootstrap 4 MD date-picker, see https://gijgo.com/datepicker #}
+    <link href="{% static 'vendor/gijgo-combined-1.9.10/css/gijgo.min.css' %}" rel="stylesheet">
+
+    {# Our custom css #}
+    <link href="{% static 'css/preloader.css' %}" rel="stylesheet">
+    <link href="{% static 'css/mortgages.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    {% include 'includes/preloader.html' %}
+
+    {# Navigation #}
+    <header>
+        {% include "includes/mdb-navigation.html" %}
+        {% include "includes/mdb-nav-clearfix.html" %}
+    </header>
+    {# Navigation #}
+
+    {# Main Content #}
+    <main>
+        <div class="container-fluid">
+            {% include "includes/django-messages.html" %}
+
+            {% block main_content %}{% endblock %}
+        </div>
+    </main>
+    <!--Main Content-->
+
+    <!-- Footer-->
+    {# Clearfix to clear the footer #}
+    {% include "includes/mdb-nav-clearfix.html" %}
+    {# TODO replace "btg-dark-blue" #}
+    <footer class="page-footer font-small btg-dark-blue fixed-bottom">
+        {% include "includes/mdb-copyright.html" %}
+    </footer>
+    <!-- Footer-->
+
+
+    <!-- SCRIPTS -->
+    {# JQuery #}
+    <script type="text/javascript" src="{% static 'vendor/mdb/js/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/preloader.js' %}"></script>
+
+    {# Set class on <html> from no-js to js, to allow js/no-js specific style #}
+    <script>$('html').removeClass('no-js').addClass('js');</script>
+
+    {# Bootstrap tooltips #}
+    <script type="text/javascript" src="{% static 'vendor/mdb/js/popper.min.js' %}"></script>
+    {# Bootstrap core JavaScript #}
+    <script type="text/javascript" src="{% static 'vendor/mdb/js/bootstrap.min.js' %}"></script>
+    {# Bootstrap select JavaScript #}
+    <script type="text/javascript" src="{% static 'vendor/bootstrap-select-1.13.2/dist/js/bootstrap-select.min.js' %}"></script>
+    {# MDB core JavaScript #}
+    <script type="text/javascript" src="{% static 'vendor/mdb/js/mdb.min.js' %}"></script>
+
+    {# Our custom js #}
+    <script type="text/javascript" src="{% static 'js/mortgages.js' %}"></script>
+
+    {# gijgo Bootstrap 4 MD date-picker, see https://gijgo.com/datepicker #}
+    <script type="text/javascript" src="{% static 'vendor/gijgo-combined-1.9.10/js/gijgo.min.js' %}"></script>
+</body>
+
+</html>
