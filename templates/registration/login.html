@@ -1,0 +1,65 @@
+{% extends "mdb-base.html" %}
+
+{% load static %}
+
+
+{% block pagetitle %}Login{% endblock %}
+
+
+{% block main_content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-4">
+        <!-- Card -->
+        <div class="card">
+        {# TODO btg-blue #}
+            <div class="card-header btg-blue darken-1 white-text">Sign in</div>
+
+            <!-- Card body -->
+            <div class="card-body">
+
+                <img src="https://via.placeholder.com/250x80" class="mx-auto d-block mb-5" />
+
+                {% if form.errors %}
+                    <p class="text-danger">
+                        Your username and password didn't match. Please try again.
+                    </p>
+                {% endif %}
+
+                <!-- Material form register -->
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}" />
+
+                    <!-- Material input email -->
+                    <div class="md-form">
+                        <i class="fa fa-user prefix grey-text"></i>
+                        <input type="text" id="id_username" name="username" required="" class="form-control">
+                        <label for="id_username" class="font-weight-light">Your username</label>
+                    </div>
+
+                    <!-- Material input password -->
+                    <div class="md-form">
+                        <i class="fa fa-lock prefix grey-text"></i>
+                        <input type="password" id="id_password" name="password" class="form-control">
+                        <label for="id_password" class="font-weight-light">Your password</label>
+                    </div>
+
+                    <div class="text-center py-4 mt-3">
+                        <button class="btn btn-primary" type="submit">Sign in</button>
+                    </div>
+                </form>
+                <!-- Material form register -->
+
+                {# TODO Forgot Password #}
+                {# Assumes you setup the password_reset view in your URLconf #}
+                {# <p><a href="{% url 'password_reset' %}">Lost password?</a></p> #}
+
+            </div>
+            <!-- Card body -->
+
+        </div>
+        <!-- Card -->
+    </div>
+
+</div>
+{% endblock %}
